@@ -132,7 +132,7 @@ class FireappSmart extends Fireapp{
                             AND (lng BETWEEN ".$coor['min_lng']." AND ".$coor['max_lng'].")
                             HAVING distance  < ".$distance."                             
                             ORDER BY distance ASC ");
-            print_r($grifos);
+
             for($i=0; $i<$grifos['count']; $i++){
                 
                 $aux['grifos'][$i]['id_gri'] = $grifos['resultado'][$i]['id_gri'];
@@ -142,39 +142,24 @@ class FireappSmart extends Fireapp{
                 
             }
             
-            $volcamino = $this->con->sql("SELECT * FROM actos_user_camino t1, usuarios t2 WHERE t1.id_act='".$id_act."' AND t1.id_user=t2.id_user");
+            $volcamino = $this->con->sql("SELECT * FROM actos_user_camino t1, usuarios t2, companias t3 WHERE t1.id_act='".$id_act."' AND t1.id_user=t2.id_user AND t1.id_cia=t3.id_cia");
             for($i=0; $i<$volcamino['count']; $i++){
                 
-                $aux['volcamino'][$i]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
-                $aux['volcamino'][$i]['lat'] = $volcamino['resultado'][$i]['lat_actual'];
-                $aux['volcamino'][$i]['lng'] = $volcamino['resultado'][$i]['lng_actual'];
-                $aux['volcamino'][$i]['id_cia'] = $volcamino['resultado'][$i]['lng_actual'];
+                $id_cia = $volcamino['resultado'][$i]['id_cia'];
+                $cia = $volcamino['resultado'][$i]['numero'];
+                $auxvol['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
+                $auxvol['lat'] = $volcamino['resultado'][$i]['lat_actual'];
+                $auxvol['lng'] = $volcamino['resultado'][$i]['lng_actual'];
                 
-                $aux['volcamino'][$i]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
-                $aux['volcamino'][$i]['segundos'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][$cia][] = $auxvol;
+                
+                
+                //$aux['volcamino'][$i]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
+                //$aux['volcamino'][$i]['segundos'] = $volcamino['resultado'][$i]['lng_actual'];
                 
             }
             
-            $aux['volcamino'][0]['nombre'] = "Diego Gomez";
-            $aux['volcamino'][0]['lat'] = "-33.439797";
-            $aux['volcamino'][0]['lng'] = "-70.612939";
-            $aux['volcamino'][0]['metros'] = "2100";
-            $aux['volcamino'][0]['segundos'] = "180";
-            $aux['volcamino'][1]['cia'] = "13";
-
-            $aux['volcamino'][1]['nombre'] = "Juan Perez";
-            $aux['volcamino'][1]['lat'] = "-33.439197";
-            $aux['volcamino'][1]['lng'] = "-70.614939";
-            $aux['volcamino'][1]['metros'] = "1700";
-            $aux['volcamino'][1]['segundos'] = "130";
-            $aux['volcamino'][1]['cia'] = "14";
-
-            $aux['volcamino'][2]['nombre'] = "Jorge Diaz";
-            $aux['volcamino'][2]['lat'] = "-33.439297";
-            $aux['volcamino'][2]['lng'] = "-70.614239";
-            $aux['volcamino'][2]['metros'] = "1950";
-            $aux['volcamino'][2]['segundos'] = "145";
-            $aux['volcamino'][2]['cia'] = "15";
+            
 
 
             $this->anexostatus("llamados", $aux);
