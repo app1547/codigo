@@ -70,7 +70,7 @@ class FireappSmart extends Fireapp{
     public function getLlamados(){
         
         $info = $this->token();
-        $this->status(); // FALTA STATUS
+        $this->status();
 
         if($info['estado']){
             
@@ -93,7 +93,35 @@ class FireappSmart extends Fireapp{
         
     }
     
-    
+    public function getLlamado(){
+        
+        $info = $this->token();
+        $this->status();
+
+        if($info['estado']){
+            
+            // SI ES USER
+            $id_user = $info['id_user'];
+            $id_cia = $info['id_cia'];
+            $id_cue = $info['id_cue'];
+            
+            $aux['clave'] = "10-0-1";
+            $aux['direccion'] = "Jose Tomas Rider 1185";
+            $aux['maquinas'] = "B13 B14 Q15";
+            $aux['datetime'] = "27-09-1984 18:30";
+            $aux['preinforme'] = "Se trata de fuego en cocina, se trabaja";
+            $this->anexostatus("llamados", $aux);
+            $this->setstatus(1, "Info Llamado");
+            
+        }else{
+            
+            // SI NO ES USER
+            $this->setstatus(0, "No se reconoce Usuario");
+            
+        }
+        return $this->getstatus();
+        
+    }
     
 }
 ?>
