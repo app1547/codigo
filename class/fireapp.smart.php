@@ -73,14 +73,14 @@ class FireappSmart extends Fireapp{
         
         $info = $this->token();
         $this->status(); // FALTA STATUS
-        
-        $id_user = $info['id_user'];
-        $id_cia = $info['id_cia'];
-        $id_cue = $info['id_cue'];
-        
+
         if($info['estado']){
             
             // SI ES USER
+            $id_user = $info['id_user'];
+            $id_cia = $info['id_cia'];
+            $id_cue = $info['id_cue'];
+            
             $llamados = $this->con->sql("SELECT DISTINCT(t1.id_act), t1.id_cue, t3.nombre, t1.direccion, t1.fecha, t1.lat, t1.lng, t1.maquinas FROM actos t1, actos_cia t2, claves t3 WHERE t1.id_cla=t3.id_cla AND t1.active='1' AND ((t1.id_cue='".$id_cue."') OR (t2.id_cia='".$id_cia."' AND t1.id_act=t2.id_act)) ORDER BY t1.fecha DESC");
             $this->anexostatus("llamados", $llamados['resultado']);
             $this->setstatus(1, "Lista de Llamados");
