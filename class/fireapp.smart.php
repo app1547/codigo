@@ -9,7 +9,7 @@ class FireappSmart extends Fireapp{
 
     public function __construct(){
         $this->con = new Conexion();
-        $this->con->sql("SELECT * FROM usuarios");
+        print_r($this->con->sql("SELECT * FROM usuarios"));
     }
     
     public function accion(){
