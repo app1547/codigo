@@ -113,31 +113,25 @@ class FireappSmart extends Fireapp{
             //$aux['acargocuerpo'] = "DIEGO GOMEZ B 13 cia"; // FUNCION QUE MUESTRA EL QUE ESTA A CARGO DEL CUERPO
             
             $maquinas = $this->con->sql("SELECT t2.sigla, t4.numero, t3.nombremostrar, t1.cantidad, t1.id_user, t1.lat, t1.lng FROM actos_maquina t1, maquinas t2, usuarios t3, companias t4 WHERE t1.id_act='".$id_act."' AND t1.id_maq=t2.id_maq AND t1.id_user=t3.id_user AND t2.id_cia=t4.id_cia");
-            print_r($maquinas);
+            for($i=0; $i<$maquinas['count']; $i++){
+                
+                $aux['lmaquinas'][$i]['nombre'] = $maquinas['resultado'][$i]['sigla'].$maquinas['resultado'][$i]['numero'];
+                $aux['lmaquinas'][$i]['id_acargo'] = $maquinas['resultado'][$i]['id_user'];
+                $aux['lmaquinas'][$i]['nombre_acargo'] = $maquinas['resultado'][$i]['nombremostrar'];
+                $aux['lmaquinas'][$i]['cantidad'] = $maquinas['resultado'][$i]['cantidad'];
+                $aux['lmaquinas'][$i]['lat'] = $maquinas['resultado'][$i]['lat'];
+                $aux['lmaquinas'][$i]['lng'] = $maquinas['resultado'][$i]['lng'];
+                
+            }
             
-            $aux2['nombre'] = "B13";
-            $aux2['acargo'] = "Diego Gomez B.";
-            $aux2['6'] = "6";
-            $aux2['lat'] = "-33.439797";
-            $aux2['lng'] = "-70.616939";
-
-            $aux['lmaquinas'][] = $aux2;
-
-            $aux2['nombre'] = "B13";
-            $aux2['acargo'] = "Diego Gomez B.";
-            $aux2['6'] = "6";
-            $aux2['lat'] = "-33.439797";
-            $aux2['lng'] = "-70.616939";
-
-            $aux['lmaquinas'][] = $aux2;
-
-            $aux2['nombre'] = "B13";
-            $aux2['acargo'] = "Diego Gomez B.";
-            $aux2['6'] = "6";
-            $aux2['lat'] = "-33.439797";
-            $aux2['lng'] = "-70.616939";
-
-            $aux['lmaquinas'][] = $aux2;
+            $coor = $this->Ubicagrifos($aux['lat'], $aux['lng'], 2);
+            $grifos = $this->con->sql("SELECT id_gri, lat, lng, (6371 * ACOS(SIN(RADIANS(lat)) * SIN(RADIANS(".$lat.")) + COS(RADIANS(lng - ".$lng.")) * COS(RADIANS(lat)) * COS(RADIANS(".$lat."))) * 1000) AS distance
+                            FROM grifos
+                            WHERE (lat BETWEEN ".$coor['min_lat']." AND ".$coor['max_lat'].")
+                            AND (lng BETWEEN ".$coor['min_lng']." AND ".$coor['max_lng'].")
+                            HAVING distance  < ".$distance."                             
+                            ORDER BY distance ASC ");
+            print_r($grifos);
 
             $aux['grifos'][0]['lat'] = "-33.439797";
             $aux['grifos'][0]['lng'] = "-70.616939";
