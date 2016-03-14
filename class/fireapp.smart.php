@@ -133,25 +133,25 @@ class FireappSmart extends Fireapp{
                             HAVING distance  < ".$distance."                             
                             ORDER BY distance ASC ");
             print_r($grifos);
-            for($j=0; $j<$grifos['count']; $j++){
+            for($i=0; $i<$grifos['count']; $i++){
                 
-                $aux['grifos'][$j]['id_gri'] = $grifos['resultado'][$i]['id_gri'];
-                $aux['grifos'][$j]['lat'] = $grifos['resultado'][$i]['lat'];
-                $aux['grifos'][$j]['lng'] = $grifos['resultado'][$i]['lng'];
-                $aux['grifos'][$j]['metros'] = $grifos['resultado'][$i]['distance']*1000;
+                $aux['grifos'][$i]['id_gri'] = $grifos['resultado'][$i]['id_gri'];
+                $aux['grifos'][$i]['lat'] = $grifos['resultado'][$i]['lat'];
+                $aux['grifos'][$i]['lng'] = $grifos['resultado'][$i]['lng'];
+                $aux['grifos'][$i]['metros'] = $grifos['resultado'][$i]['distance']*1000;
                 
             }
             
             $volcamino = $this->con->sql("SELECT * FROM actos_user_camino t1, usuarios t2 WHERE t1.id_act='".$id_act."' AND t1.id_user=t2.id_user");
-            for($k=0; $k<$volcamino['count']; $k++){
+            for($i=0; $i<$volcamino['count']; $i++){
                 
-                $aux['volcamino'][0]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
-                $aux['volcamino'][0]['lat'] = $volcamino['resultado'][$i]['lat_actual'];
-                $aux['volcamino'][0]['lng'] = $volcamino['resultado'][$i]['lng_actual'];
-                $aux['volcamino'][0]['id_cia'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][$i]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
+                $aux['volcamino'][$i]['lat'] = $volcamino['resultado'][$i]['lat_actual'];
+                $aux['volcamino'][$i]['lng'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][$i]['id_cia'] = $volcamino['resultado'][$i]['lng_actual'];
                 
-                $aux['volcamino'][0]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
-                $aux['volcamino'][0]['segundos'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][$i]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][$i]['segundos'] = $volcamino['resultado'][$i]['lng_actual'];
                 
             }
             
