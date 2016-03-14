@@ -24,7 +24,7 @@ class Fireapp{
     public function getstatus(){
         return $this->status;
     }
-    public function Ubicagrifos($lat, $lng, $distance){
+    public function ubicagrifos($lat, $lng, $distance){
         
         $return = array();
         $earthRadius = 6371;

@@ -124,7 +124,8 @@ class FireappSmart extends Fireapp{
                 
             }
             
-            $coor = $this->Ubicagrifos($aux['lat'], $aux['lng'], 2);
+            $coor = $this->ubicagrifos($aux['lat'], $aux['lng'], 2);
+            print_r($coor);
             $grifos = $this->con->sql("SELECT id_gri, lat, lng, (6371 * ACOS(SIN(RADIANS(lat)) * SIN(RADIANS(".$lat.")) + COS(RADIANS(lng - ".$lng.")) * COS(RADIANS(lat)) * COS(RADIANS(".$lat."))) * 1000) AS distance
                             FROM grifos
                             WHERE (lat BETWEEN ".$coor['min_lat']." AND ".$coor['max_lat'].")
