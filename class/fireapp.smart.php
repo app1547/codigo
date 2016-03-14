@@ -8,10 +8,9 @@ class FireappSmart extends Fireapp{
     public $status = null;
 
     public function __construct(){
-        echo "1";
         $this->con = new Conexion();
-        echo "2";
     }
+    
     public function accion(){
 
         $accion = $_POST["accion"];
