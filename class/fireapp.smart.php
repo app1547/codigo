@@ -114,23 +114,29 @@ class FireappSmart extends Fireapp{
             $aux['datetime'] = "27-09-1984 18:30";
             $aux['preinforme'] = "Se trata de fuego en cocina, se trabaja";
             
-            $aux['maquinas'][0]['nombre'] = "B13";
-            $aux['maquinas'][0]['acargocia'] = "Diego Gomez B.";
-            $aux['maquinas'][0]['cantidad'] = "6";
-            $aux['maquinas'][0]['lat'] = "-33.439797";
-            $aux['maquinas'][0]['lng'] = "-70.616939";
+            $aux2['nombre'] = "B13";
+            $aux2['acargo'] = "Diego Gomez B.";
+            $aux2['6'] = "6";
+            $aux2['lat'] = "-33.439797";
+            $aux2['lng'] = "-70.616939";
             
-            $aux['maquinas'][1]['nombre'] = "B14";
-            $aux['maquinas'][1]['acargocia'] = "Juan Fernandez";
-            $aux['maquinas'][1]['cantidad'] = "5";
-            $aux['maquinas'][1]['lat'] = "-33.439797";
-            $aux['maquinas'][1]['lng'] = "-70.616939";
+            $aux['maquinas'][] = $aux2;
             
-            $aux['maquinas'][2]['nombre'] = "Q15";
-            $aux['maquinas'][2]['acargocia'] = "Juan Fernandez";
-            $aux['maquinas'][2]['cantidad'] = "5";
-            $aux['maquinas'][2]['lat'] = "-33.439797";
-            $aux['maquinas'][2]['lng'] = "-70.616939";
+            $aux2['nombre'] = "B13";
+            $aux2['acargo'] = "Diego Gomez B.";
+            $aux2['6'] = "6";
+            $aux2['lat'] = "-33.439797";
+            $aux2['lng'] = "-70.616939";
+            
+            $aux['maquinas'][] = $aux2;
+            
+            $aux2['nombre'] = "B13";
+            $aux2['acargo'] = "Diego Gomez B.";
+            $aux2['6'] = "6";
+            $aux2['lat'] = "-33.439797";
+            $aux2['lng'] = "-70.616939";
+            
+            $aux['maquinas'][] = $aux2;
             
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
