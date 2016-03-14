@@ -126,11 +126,11 @@ class FireappSmart extends Fireapp{
             $aux['maquinas'][1]['lat'] = "-33.439797";
             $aux['maquinas'][1]['lng'] = "-70.616939";
             
-            $aux['maquinas'][1]['nombre'] = "Q15";
-            $aux['maquinas'][1]['acargocia'] = "Juan Fernandez";
-            $aux['maquinas'][1]['cantidad'] = "5";
-            $aux['maquinas'][1]['lat'] = "-33.439797";
-            $aux['maquinas'][1]['lng'] = "-70.616939";
+            $aux['maquinas'][2]['nombre'] = "Q15";
+            $aux['maquinas'][2]['acargocia'] = "Juan Fernandez";
+            $aux['maquinas'][2]['cantidad'] = "5";
+            $aux['maquinas'][2]['lat'] = "-33.439797";
+            $aux['maquinas'][2]['lng'] = "-70.616939";
             
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
