@@ -120,7 +120,7 @@ class FireappSmart extends Fireapp{
             $aux2['lat'] = "-33.439797";
             $aux2['lng'] = "-70.616939";
             
-            $aux['maquinas'][0] = $aux2;
+            $aux['lmaquinas'][] = $aux2;
 
             $aux2['nombre'] = "B13";
             $aux2['acargo'] = "Diego Gomez B.";
@@ -128,7 +128,7 @@ class FireappSmart extends Fireapp{
             $aux2['lat'] = "-33.439797";
             $aux2['lng'] = "-70.616939";
             
-            $aux['maquinas'][1] = $aux2;
+            $aux['lmaquinas'][] = $aux2;
             
             $aux2['nombre'] = "B13";
             $aux2['acargo'] = "Diego Gomez B.";
@@ -136,7 +136,7 @@ class FireappSmart extends Fireapp{
             $aux2['lat'] = "-33.439797";
             $aux2['lng'] = "-70.616939";
             
-            $aux['maquinas'][2] = $aux2;
+            $aux['lmaquinas'][] = $aux2;
             
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
