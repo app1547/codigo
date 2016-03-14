@@ -165,12 +165,12 @@ class FireappSmart extends Fireapp{
             $aux['volcamino'][1]['segundos'] = "130";
             $aux['volcamino'][1]['cia'] = "14";
             
-            $aux['volcamino'][1]['nombre'] = "Jorge Diaz";
-            $aux['volcamino'][1]['lat'] = "-33.439297";
-            $aux['volcamino'][1]['lng'] = "-70.614239";
-            $aux['volcamino'][1]['metros'] = "1950";
-            $aux['volcamino'][1]['segundos'] = "145";
-            $aux['volcamino'][1]['cia'] = "15";
+            $aux['volcamino'][2]['nombre'] = "Jorge Diaz";
+            $aux['volcamino'][2]['lat'] = "-33.439297";
+            $aux['volcamino'][2]['lng'] = "-70.614239";
+            $aux['volcamino'][2]['metros'] = "1950";
+            $aux['volcamino'][2]['segundos'] = "145";
+            $aux['volcamino'][2]['cia'] = "15";
             
             
             $this->anexostatus("llamados", $aux);
