@@ -138,6 +138,19 @@ class FireappSmart extends Fireapp{
             
             $aux['lmaquinas'][] = $aux2;
             
+            $aux['grifos'][0]['lat'] = "-33.439797";
+            $aux['grifos'][0]['lng'] = "-70.616939";
+            $aux['grifos'][0]['metros'] = "35"; // EN METROS
+            
+            $aux['grifos'][0]['lat'] = "-33.437797";
+            $aux['grifos'][0]['lng'] = "-70.612939";
+            $aux['grifos'][0]['metros'] = "245"; // EN METROS
+            
+            $aux['grifos'][0]['lat'] = "-33.435797";
+            $aux['grifos'][0]['lng'] = "-70.611939";
+            $aux['grifos'][0]['metros'] = "785"; // EN METROS
+            
+            
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
             
