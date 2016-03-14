@@ -51,19 +51,23 @@ class FireappSmart extends Fireapp{
     private function token(){
             
         $token = $this->getpost('token');
-
-        $id_token = substr($token, 0, 18);
-        $id_user = intval(substr($token, 18, 7));
         $ret['estado'] = false;
+        
+        if(isset($token)){
+        
+            $id_token = substr($token, 0, 18);
+            $id_user = intval(substr($token, 18, 7));
+        
+            $tok = $this->con->sql("SELECT token, id_cia, id_cue FROM usuarios WHERE id_user='".$id_user."'");
+            if($tok['count'] == 1 && $tok['resultado'][0]['token'] == $id_token){
 
-        $tok = $this->con->sql("SELECT token, id_cia, id_cue FROM usuarios WHERE id_user='".$id_user."'");
-        if($tok['count'] == 1 && $tok['resultado'][0]['token'] == $id_token){
+                $ret['id_user'] = $id_user;
+                $ret['id_cia'] = $tok['resultado'][0]['id_cia'];
+                $ret['id_cue'] = $tok['resultado'][0]['id_cue'];
+                $ret['estado'] = true;
 
-            $ret['id_user'] = $id_user;
-            $ret['id_cia'] = $tok['resultado'][0]['id_cia'];
-            $ret['id_cue'] = $tok['resultado'][0]['id_cue'];
-            $ret['estado'] = true;
-
+            }
+            
         }
         return $ret;
 
