@@ -5,5 +5,5 @@
     include('../class/fireapp.smart.php');
     
     $fireappsmart = new FireappSmart();
-    echo json_encode($fireappsmart->accion());
+    echo json_encode($fireappsmart->accion(), JSON_PRETTY_PRINT);
 ?>
