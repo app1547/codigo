@@ -120,7 +120,7 @@ class FireappSmart extends Fireapp{
             $aux2['lat'] = "-33.439797";
             $aux2['lng'] = "-70.616939";
             
-            $aux['maquinas'] = $aux2;
+            $aux['maquinas'][0] = $aux2;
             print_r($aux['maquinas']);
             $aux2['nombre'] = "B13";
             $aux2['acargo'] = "Diego Gomez B.";
