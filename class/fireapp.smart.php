@@ -119,9 +119,9 @@ class FireappSmart extends Fireapp{
             $aux2['6'] = "6";
             $aux2['lat'] = "-33.439797";
             $aux2['lng'] = "-70.616939";
-            print_r($aux2);
-            //$aux['maquinas'][] = $aux2;
             
+            $aux['maquinas'] = $aux2;
+            print_r($aux['maquinas']);
             $aux2['nombre'] = "B13";
             $aux2['acargo'] = "Diego Gomez B.";
             $aux2['6'] = "6";
