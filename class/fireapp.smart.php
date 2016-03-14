@@ -94,12 +94,12 @@ class FireappSmart extends Fireapp{
     }
     
     public function getLlamado(){
-        
+        echo"1";
         $this->status();
         $id_act = $this->getpost('idact');
         if(is_int($id_act)){
             
-            echo"1";
+            
             $llamado = $this->con->sql("SELECT * FROM actos t1, claves t2 WHERE t1.id_act='".$id_act."' AND t1.id_cla=t2.id_cla");
         
             $aux['clave'] = $llamado['resultado'][0]['nombre'];
