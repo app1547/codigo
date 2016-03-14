@@ -7,6 +7,7 @@ require_once("bdconfig.php");
 
 class Conexion {
 
+        public $conn = null;
 	public $host = null;
 	public $usuario	= null;
 	public $password = null;
@@ -28,7 +29,7 @@ class Conexion {
 
 	private function conexion($r){
 
-            $this->con = mysql_connect($this->host[$r], $this->usuario[$r], $this->password[$r]);
+            $this->conn = mysql_connect($this->host[$r], $this->usuario[$r], $this->password[$r]);
             $error_mysql = mysql_error();
             if($error_mysql != ''){
                     $resultado['estado']	= false;
@@ -51,7 +52,7 @@ class Conexion {
 	}
 
         
-	public function sql($sql) {
+	public function sql($sql){
 		
             if (preg_match("/select/i", $sql)) {
                 $r = rand(1,2);
@@ -92,7 +93,7 @@ class Conexion {
 	}
 
 	public function __destruct(){
-		@mysql_close($this->con);
+		@mysql_close($this->conn);
 	}
 
 
