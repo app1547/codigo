@@ -132,7 +132,7 @@ class FireappSmart extends Fireapp{
                             AND (lng BETWEEN ".$coor['min_lng']." AND ".$coor['max_lng'].")
                             HAVING distance  < ".$distance."                             
                             ORDER BY distance ASC ");
-            
+            print_r($grifos);
             for($j=0; $j<$grifos['count']; $j++){
                 
                 $aux['grifos'][$j]['id_gri'] = $grifos['resultado'][$i]['id_gri'];
@@ -141,8 +141,20 @@ class FireappSmart extends Fireapp{
                 $aux['grifos'][$j]['metros'] = $grifos['resultado'][$i]['distance']*1000;
                 
             }
-
-
+            
+            $volcamino = $this->con->sql("SELECT * FROM actos_user_camino t1, usuarios t2 WHERE t1.id_act='".$id_act."' AND t1.id_user=t2.id_user");
+            for($k=0; $k<$volcamino['count']; $k++){
+                
+                $aux['volcamino'][0]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
+                $aux['volcamino'][0]['lat'] = $volcamino['resultado'][$i]['lat_actual'];
+                $aux['volcamino'][0]['lng'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][0]['id_cia'] = $volcamino['resultado'][$i]['lng_actual'];
+                
+                $aux['volcamino'][0]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
+                $aux['volcamino'][0]['segundos'] = $volcamino['resultado'][$i]['lng_actual'];
+                
+            }
+            
             $aux['volcamino'][0]['nombre'] = "Diego Gomez";
             $aux['volcamino'][0]['lat'] = "-33.439797";
             $aux['volcamino'][0]['lng'] = "-70.612939";
