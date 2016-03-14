@@ -6,17 +6,23 @@ class FireappSmart extends Fireapp{
 
     public $con = null;
     public $status = null;
+    public $debug = true;
 
     public function __construct(){
         $this->con = new Conexion();
-        print_r($this->con->sql("SELECT * FROM usuarios"));
     }
-    
+    public function getpost($var){
+        if($this->debug){
+            return $_GET[$var];
+        }else{
+            return $_POST[$var];
+        }
+    }
     public function accion(){
-
-        if(isset($_POST["accion"])){
-            $accion = $_POST["accion"];
         
+        $accion = $this->getpost('accion');
+        if(isset($accion)){
+
             if(isset($accion)){
 
                 /* INFO SOBRE LLAMADOS */
@@ -44,7 +50,7 @@ class FireappSmart extends Fireapp{
     }
     private function token(){
             
-        $token = $_POST["token"];
+        $token = $this->getpost('token');
 
         $id_token = substr($token, 0, 18);
         $id_user = intval(substr($token, 18, 7));
@@ -66,7 +72,7 @@ class FireappSmart extends Fireapp{
     public function getLlamados(){
         
         $info = $this->token();
-        $this->status();
+        $this->status(); // FALTA STATUS
         
         $id_user = $info['id_user'];
         $id_cia = $info['id_cia'];
