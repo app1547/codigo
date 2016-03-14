@@ -13,9 +13,11 @@ class FireappSmart extends Fireapp{
     }
     public function getpost($var){
         if($this->debug){
-            return $_GET[$var];
+            if(isset($_GET[$var]))
+                return $_GET[$var];
         }else{
-            return $_POST[$var];
+            if(isset($_POST[$var]))
+                return $_POST[$var];
         }
     }
     public function accion(){
