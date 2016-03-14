@@ -112,7 +112,7 @@ class FireappSmart extends Fireapp{
             
             //$aux['acargocuerpo'] = "DIEGO GOMEZ B 13 cia"; // FUNCION QUE MUESTRA EL QUE ESTA A CARGO DEL CUERPO
             
-            $maquinas = $this->con->sql("SELECT * FROM actos_maquina t1, maquinas t2, usuarios t3, companias t4 WHERE t1.id_act='".$id_act."' AND t1.id_maq=t2.id_maq AND t1.id_user=t3.id_user AND t2.id_cia=t4.id_cia");
+            $maquinas = $this->con->sql("SELECT t2.sigla, t4.numero, t3.nombremostrar, t1.cantidad, t1.id_user, t1.lat, t1.lng FROM actos_maquina t1, maquinas t2, usuarios t3, companias t4 WHERE t1.id_act='".$id_act."' AND t1.id_maq=t2.id_maq AND t1.id_user=t3.id_user AND t2.id_cia=t4.id_cia");
             print_r($maquinas);
             
             $aux2['nombre'] = "B13";
