@@ -132,19 +132,15 @@ class FireappSmart extends Fireapp{
                             AND (lng BETWEEN ".$coor['min_lng']." AND ".$coor['max_lng'].")
                             HAVING distance  < ".$distance."                             
                             ORDER BY distance ASC ");
-            print_r($grifos);
-
-            $aux['grifos'][0]['lat'] = "-33.439797";
-            $aux['grifos'][0]['lng'] = "-70.616939";
-            $aux['grifos'][0]['metros'] = "35";
-
-            $aux['grifos'][1]['lat'] = "-33.437797";
-            $aux['grifos'][1]['lng'] = "-70.612939";
-            $aux['grifos'][1]['metros'] = "245";
-
-            $aux['grifos'][2]['lat'] = "-33.435797";
-            $aux['grifos'][2]['lng'] = "-70.611939";
-            $aux['grifos'][2]['metros'] = "785";
+            
+            for($j=0; $j<$grifos['count']; $j++){
+                
+                $aux['grifos'][$j]['id_gri'] = $grifos['resultado'][$i]['id_gri'];
+                $aux['grifos'][$j]['lat'] = $grifos['resultado'][$i]['lat'];
+                $aux['grifos'][$j]['lng'] = $grifos['resultado'][$i]['lng'];
+                $aux['grifos'][$j]['metros'] = $grifos['resultado'][$i]['distance']*1000;
+                
+            }
 
 
             $aux['volcamino'][0]['nombre'] = "Diego Gomez";
