@@ -146,9 +146,9 @@ class FireappSmart extends Fireapp{
             $aux['grifos'][1]['lng'] = "-70.612939";
             $aux['grifos'][1]['metros'] = "245";
             
-            $aux['grifos'][0]['lat'] = "-33.435797";
-            $aux['grifos'][0]['lng'] = "-70.611939";
-            $aux['grifos'][0]['metros'] = "785";
+            $aux['grifos'][2]['lat'] = "-33.435797";
+            $aux['grifos'][2]['lng'] = "-70.611939";
+            $aux['grifos'][2]['metros'] = "785";
             
             
             $aux['volcamino'][0]['nombre'] = "Diego Gomez";
