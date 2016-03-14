@@ -108,8 +108,30 @@ class FireappSmart extends Fireapp{
             $aux['clave'] = "10-0-1";
             $aux['direccion'] = "Jose Tomas Rider 1185";
             $aux['maquinas'] = "B13 B14 Q15";
+            $aux['acargocuerpo'] = "DIEGO GOMEZ B 13 cia"; // FUNCION QUE MUESTRA EL QUE ESTA A CARGO DEL CUERPO
+            $aux['lat'] = "-33.439797";
+            $aux['lng'] = "-70.616939";
             $aux['datetime'] = "27-09-1984 18:30";
             $aux['preinforme'] = "Se trata de fuego en cocina, se trabaja";
+            
+            $aux['maquinas'][0]['nombre'] = "B13";
+            $aux['maquinas'][0]['acargocia'] = "Diego Gomez B.";
+            $aux['maquinas'][0]['cantidad'] = "6";
+            $aux['maquinas'][0]['lat'] = "-33.439797";
+            $aux['maquinas'][0]['lng'] = "-70.616939";
+            
+            $aux['maquinas'][1]['nombre'] = "B14";
+            $aux['maquinas'][1]['acargocia'] = "Juan Fernandez";
+            $aux['maquinas'][1]['cantidad'] = "5";
+            $aux['maquinas'][1]['lat'] = "-33.439797";
+            $aux['maquinas'][1]['lng'] = "-70.616939";
+            
+            $aux['maquinas'][1]['nombre'] = "Q15";
+            $aux['maquinas'][1]['acargocia'] = "Juan Fernandez";
+            $aux['maquinas'][1]['cantidad'] = "5";
+            $aux['maquinas'][1]['lat'] = "-33.439797";
+            $aux['maquinas'][1]['lng'] = "-70.616939";
+            
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
             
