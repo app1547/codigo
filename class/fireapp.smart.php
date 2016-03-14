@@ -140,15 +140,37 @@ class FireappSmart extends Fireapp{
             
             $aux['grifos'][0]['lat'] = "-33.439797";
             $aux['grifos'][0]['lng'] = "-70.616939";
-            $aux['grifos'][0]['metros'] = "35"; // EN METROS
+            $aux['grifos'][0]['metros'] = "35";
             
-            $aux['grifos'][0]['lat'] = "-33.437797";
-            $aux['grifos'][0]['lng'] = "-70.612939";
-            $aux['grifos'][0]['metros'] = "245"; // EN METROS
+            $aux['grifos'][1]['lat'] = "-33.437797";
+            $aux['grifos'][1]['lng'] = "-70.612939";
+            $aux['grifos'][1]['metros'] = "245";
             
             $aux['grifos'][0]['lat'] = "-33.435797";
             $aux['grifos'][0]['lng'] = "-70.611939";
-            $aux['grifos'][0]['metros'] = "785"; // EN METROS
+            $aux['grifos'][0]['metros'] = "785";
+            
+            
+            $aux['volcamino'][0]['nombre'] = "Diego Gomez";
+            $aux['volcamino'][0]['lat'] = "-33.439797";
+            $aux['volcamino'][0]['lng'] = "-70.612939";
+            $aux['volcamino'][0]['metros'] = "2100";
+            $aux['volcamino'][0]['segundos'] = "180";
+            $aux['volcamino'][1]['cia'] = "13";
+            
+            $aux['volcamino'][1]['nombre'] = "Juan Perez";
+            $aux['volcamino'][1]['lat'] = "-33.439197";
+            $aux['volcamino'][1]['lng'] = "-70.614939";
+            $aux['volcamino'][1]['metros'] = "1700";
+            $aux['volcamino'][1]['segundos'] = "130";
+            $aux['volcamino'][1]['cia'] = "14";
+            
+            $aux['volcamino'][1]['nombre'] = "Jorge Diaz";
+            $aux['volcamino'][1]['lat'] = "-33.439297";
+            $aux['volcamino'][1]['lng'] = "-70.614239";
+            $aux['volcamino'][1]['metros'] = "1950";
+            $aux['volcamino'][1]['segundos'] = "145";
+            $aux['volcamino'][1]['cia'] = "15";
             
             
             $this->anexostatus("llamados", $aux);
