@@ -13,28 +13,31 @@ class FireappSmart extends Fireapp{
     
     public function accion(){
 
-        $accion = $_POST["accion"];
-        if(isset($accion)){
-            
-            /* INFO SOBRE LLAMADOS */
-            if($accion == "getLlamados"){
-                return $this->getLlamados();
+        if(isset($_POST["accion"])){
+            $accion = $_POST["accion"];
+        
+            if(isset($accion)){
+
+                /* INFO SOBRE LLAMADOS */
+                if($accion == "getLlamados"){
+                    return $this->getLlamados();
+                }
+                if($accion == "getLlamado"){
+                    return $this->getLlamado();
+                }
+                /* INFO PERSONA */
+                if($accion == "getPerfil"){
+                    return $this->getLlamado();
+                }
+                if($accion == "getUltimosLlamados"){
+                    return $this->getLlamado();
+                }
+                /* INGRESO AL SISTEMA */
+                if($accion == "ingresoUser"){
+                    return $this->ingresoUser();
+                }
+
             }
-            if($accion == "getLlamado"){
-                return $this->getLlamado();
-            }
-            /* INFO PERSONA */
-            if($accion == "getPerfil"){
-                return $this->getLlamado();
-            }
-            if($accion == "getUltimosLlamados"){
-                return $this->getLlamado();
-            }
-            /* INGRESO AL SISTEMA */
-            if($accion == "ingresoUser"){
-                return $this->ingresoUser();
-            }
-            
         }
 
     }
