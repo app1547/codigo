@@ -148,11 +148,15 @@ class FireappSmart extends Fireapp{
                 
                 $id_cia = $volcamino['resultado'][$i]['id_cia'];
                 $cia = $volcamino['resultado'][$i]['numero'];
+                $id_user = $volcamino['resultado'][$i]['id_user'];
                 
                 $auxvol['id_user'] = $volcamino['resultado'][$i]['id_user'];
                 $auxvol['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
                 $auxvol['lat'] = $volcamino['resultado'][$i]['lat_actual'];
                 $auxvol['lng'] = $volcamino['resultado'][$i]['lng_actual'];
+                
+                $aux['totalvol'][$id_cia][$id_user]['id_user'] = $volcamino['resultado'][$i]['id_user']; 
+                $aux['totalvol'][$id_cia][$id_user]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
                 
                 //$diflat = $aux['lat'];
                 
