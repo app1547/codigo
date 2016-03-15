@@ -147,6 +147,8 @@ class FireappSmart extends Fireapp{
                 
                 $id_cia = $volcamino['resultado'][$i]['id_cia'];
                 $cia = $volcamino['resultado'][$i]['numero'];
+                
+                $auxvol['id_user'] = $volcamino['resultado'][$i]['id_user'];
                 $auxvol['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
                 $auxvol['lat'] = $volcamino['resultado'][$i]['lat_actual'];
                 $auxvol['lng'] = $volcamino['resultado'][$i]['lng_actual'];
