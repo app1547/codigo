@@ -45,6 +45,9 @@ class FireappSmart extends Fireapp{
                 if($accion == "ingresoUser"){
                     return $this->ingresoUser();
                 }
+                if($accion == "setPosicion"){
+                    return $this->setPosicion();
+                }
 
             }
         }
@@ -186,7 +189,7 @@ class FireappSmart extends Fireapp{
         
     }
     
-    public function setPosition(){
+    public function setPosicion(){
         
         $info = $this->token();
         $this->status();
