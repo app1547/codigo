@@ -193,7 +193,7 @@ class FireappSmart extends Fireapp{
         
         $info = $this->token();
         $this->status();
-        
+        echo "si1";
         if($info['estado']){
             
             echo "si";
