@@ -25,35 +25,32 @@ class FireappSmart extends Fireapp{
         $accion = $this->getpost('accion');
         if(isset($accion)){
 
-            if(isset($accion)){
-
-                /* INFO SOBRE LLAMADOS */
-                if($accion == "getLlamados"){
-                    return $this->getLlamados();
-                }
-                if($accion == "getLlamado"){
-                    return $this->getLlamado();
-                }
-                /* INFO PERSONA */
-                if($accion == "getPerfil"){
-                    return $this->getLlamado();
-                }
-                if($accion == "getUltimosLlamados"){
-                    return $this->getLlamado();
-                }
-                /* INGRESO AL SISTEMA */
-                if($accion == "ingresoUser"){
-                    return $this->ingresoUser();
-                }
-                if($accion == "setPosicion"){
-                    return $this->setPosicion();
-                }
-                $ret['estado'] = 0;
-                $ret['estado'] = "No se reconoce accion";
-                return $ret;
-                
+            /* INFO SOBRE LLAMADOS */
+            if($accion == "getLlamados"){
+                return $this->getLlamados();
             }
+            if($accion == "getLlamado"){
+                return $this->getLlamado();
+            }
+            /* INFO PERSONA */
+            if($accion == "getPerfil"){
+                return $this->getLlamado();
+            }
+            if($accion == "getUltimosLlamados"){
+                return $this->getLlamado();
+            }
+            /* INGRESO AL SISTEMA */
+            if($accion == "ingresoUser"){
+                return $this->ingresoUser();
+            }
+            if($accion == "setPosicion"){
+                return $this->setPosicion();
+            }
+
         }
+        $ret['estado'] = 0;
+        $ret['estado'] = "No se reconoce accion";
+        return $ret;
 
     }
     private function token(){
