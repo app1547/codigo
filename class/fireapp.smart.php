@@ -205,7 +205,7 @@ class FireappSmart extends Fireapp{
             $result = $this->con->sql("SELECT * FROM actos_user_camino WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
             if($result['count'] == 0){
                 
-                $this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')");
+                print_r($this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')"));
                 if($lat != "" && $lng != ""){
                     $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
                     $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
