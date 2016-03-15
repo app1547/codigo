@@ -164,8 +164,17 @@ class FireappSmart extends Fireapp{
             }
             
             $totalvol = $this->con->sql("SELECT * FROM actos_cia t1, usuarios t2 WHERE t1.id_act='".$id_act."' AND t1.id_cia=t2.id_cia AND t2.cuartel='1'");
-            print_r($totalvol);
-
+            
+            for($i=0; $i<$totalvol['count']; $i++){
+                
+                $id_cia = $totalvol['resultado'][$i]['id_cia'];
+                $id_user = $totalvol['resultado'][$i]['id_user'];
+                $aux['totalvol'][$id_cia][$id_user]['id_user'] = $totalvol['resultado'][$i]['id_user']; 
+                $aux['totalvol'][$id_cia][$id_user]['nombre'] = $totalvol['resultado'][$i]['nombremostrar']; 
+                
+            }
+            
+            
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
         }
