@@ -50,6 +50,7 @@ class FireappSmart extends Fireapp{
                 }
                 $ret['estado'] = 0;
                 $ret['estado'] = "No se reconoce accion";
+                return $ret;
                 
             }
         }
