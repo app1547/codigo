@@ -203,6 +203,7 @@ class FireappSmart extends Fireapp{
             $modo = $this->getpost('modo');
             
             $result = $this->con->sql("SELECT * FROM actos_user_camino WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+            print_r($result);
             if($result['count'] == 0){
                 
                 print_r($this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')"));
