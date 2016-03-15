@@ -196,8 +196,8 @@ class FireappSmart extends Fireapp{
         
         if($info['estado']){
             
-            $id_user = $info['id_user'];
-            $id_act = $this->getpost('id_act');
+            $id_user = $info['iduser'];
+            $id_act = $this->getpost('idact');
             $lat = $this->getpost('lat');
             $lng = $this->getpost('lng');
             $modo = $this->getpost('modo');
