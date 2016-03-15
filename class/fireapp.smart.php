@@ -51,7 +51,7 @@ class FireappSmart extends Fireapp{
 
     }
     private function token(){
-        // TERMINADA NO TOCAR 
+        
         $token = $this->getpost('token');
         $ret['estado'] = false;
         if(isset($token)){
@@ -159,7 +159,7 @@ class FireappSmart extends Fireapp{
                 $aux['totalvol'][$id_cia][$id_user]['nombre'] = $volcamino['resultado'][$i]['nombremostrar'];
                 
                 //$diflat = $aux['lat'];
-                
+                // CALCULAR NUEVA DISTANCIA Y TIEMPO
                 $aux['volcamino'][$cia][] = $auxvol;
                 
                 //$aux['volcamino'][$i]['metros'] = $volcamino['resultado'][$i]['lng_actual'];
@@ -178,7 +178,6 @@ class FireappSmart extends Fireapp{
                 
             }
             
-            
             $this->anexostatus("llamados", $aux);
             $this->setstatus(1, "Info Llamado");
         }
@@ -186,6 +185,50 @@ class FireappSmart extends Fireapp{
         return $this->getstatus();
         
     }
+    
+    public function setPosition(){
+        
+        $info = $this->token();
+        $this->status();
+        
+        if($info['estado']){
+            
+            $id_user = $info['id_user'];
+            $id_act = $this->getpost('id_act');
+            $lat = $this->getpost('lat');
+            $lng = $this->getpost('lng');
+            $modo = $this->getpost('modo');
+            
+            $result = $this->con->sql("SELECT * FROM actos_user_camino WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+            if($result['count'] == 0){
+                
+                $this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')");
+                if($lat != "" && $lng != ""){
+                    $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
+                    $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
+                    $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                }
+                
+            }else{
+                
+                if($result['resultado'][0]['posicion'] == 0){
+                    $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
+                    $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
+                    $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                }else{
+                    $this->con->sql("UPDATE actos_user_camino SET lat_actual='".$lat."' AND lng_actual='".$lng."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                }
+                
+            }
+
+            
+        }
+        $this->setstatus(0, "Error: no es posible efectuar la instruccion");
+        return $this->getstatus();
+        
+    }
+    
+    
     
 }
 ?>

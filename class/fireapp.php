@@ -46,6 +46,35 @@ class Fireapp{
         return array('min_lat'  => $return['south']['lat'], 'max_lat' => $return['north']['lat'], 'min_lng' => $return['west']['lng'], 'max_lng' => $return['east']['lng']);
         
     }
+    public function getgoogledist($lat1, $lat2, $lng1, $lng2, $mode = null){
+            
+        if($mode == null){
+            $mode = "driving";
+        }
+
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$lng1."&destinations=".$lat2.",".$lng2."&mode=".$mode."&language=es";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $response = json_decode($response, true);
+
+        $aux['disttext'] = $response['rows'][0]['elements'][0]['distance']['text'];
+        $aux['distvalue'] = $response['rows'][0]['elements'][0]['distance']['value'];
+        $aux['timetext'] = $response['rows'][0]['elements'][0]['duration']['text'];
+        $aux['timevalue'] = $response['rows'][0]['elements'][0]['duration']['value'];
+
+        //$aux['originadress'] = $response['origin_addresses'][0];
+        //$aux['destinadress'] = $response['destination_addresses'][0];
+
+        return $aux;
+
+    }
     
 }
 ?>
