@@ -63,7 +63,7 @@ class Fireapp{
         curl_close($ch);
 
         $response = json_decode($response, true);
-
+        print_r($response);
         $aux['disttext'] = $response['rows'][0]['elements'][0]['distance']['text'];
         $aux['distvalue'] = $response['rows'][0]['elements'][0]['distance']['value'];
         $aux['timetext'] = $response['rows'][0]['elements'][0]['duration']['text'];

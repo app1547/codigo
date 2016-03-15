@@ -209,7 +209,6 @@ class FireappSmart extends Fireapp{
                 if($lat != "" && $lng != ""){
                     $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
                     $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
-                    print_r($google);
                     $s = $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
                 }
                 
