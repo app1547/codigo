@@ -60,7 +60,6 @@ class FireappSmart extends Fireapp{
         if(isset($token)){
             $id_user = $this->getpost('iduser');
             $tok = $this->con->sql("SELECT token, id_cia, id_cue FROM usuarios WHERE id_user='".$id_user."'");
-            print_r($tok);
             if($tok['count'] == 1 && $tok['resultado'][0]['token'] == $token){
                 $ret['id_user'] = $id_user;
                 $ret['id_cia'] = $tok['resultado'][0]['id_cia'];
@@ -194,10 +193,9 @@ class FireappSmart extends Fireapp{
         
         $info = $this->token();
         $this->status();
-        echo "si1";
+        
         if($info['estado']){
             
-            echo "si";
             $id_user = $info['id_user'];
             $id_act = $this->getpost('id_act');
             $lat = $this->getpost('lat');
@@ -205,10 +203,9 @@ class FireappSmart extends Fireapp{
             $modo = $this->getpost('modo');
             
             $result = $this->con->sql("SELECT * FROM actos_user_camino WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
-            print_r($result);
             if($result['count'] == 0){
                 
-                print_r($this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')"));
+                $this->con->sql("INSERT INTO actos_user_camino (id_act, id_user) VALUES ('".$id_act."', '".$id_user."')");
                 if($lat != "" && $lng != ""){
                     $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
                     $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
