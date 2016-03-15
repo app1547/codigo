@@ -223,8 +223,9 @@ class FireappSmart extends Fireapp{
                         $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
                         echo "2";
                     }else{
-                        $this->con->sql("UPDATE actos_user_camino SET lat_actual='".$lat."' AND lng_actual='".$lng."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
-                        echo "3";
+                        $s = $this->con->sql("UPDATE actos_user_camino SET lat_actual='".$lat."' AND lng_actual='".$lng."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                        echo "3<br/><br/>";
+                        print_r($s);
                     }
                 }
                 
