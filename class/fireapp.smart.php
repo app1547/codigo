@@ -214,12 +214,14 @@ class FireappSmart extends Fireapp{
                 
             }else{
                 
-                if($result['resultado'][0]['posicion'] == 0 && $lat != "" && $lng != ""){
-                    $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
-                    $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
-                    $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
-                }else{
-                    $this->con->sql("UPDATE actos_user_camino SET lat_actual='".$lat."' AND lng_actual='".$lng."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                if($lat != "" && $lng != ""){
+                    if($result['resultado'][0]['posicion'] == 0){
+                        $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
+                        $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
+                        $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                    }else{
+                        $this->con->sql("UPDATE actos_user_camino SET lat_actual='".$lat."' AND lng_actual='".$lng."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                    }
                 }
                 
             }
