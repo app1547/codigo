@@ -48,7 +48,9 @@ class FireappSmart extends Fireapp{
                 if($accion == "setPosicion"){
                     return $this->setPosicion();
                 }
-
+                $ret['estado'] = 0;
+                $ret['estado'] = "No se reconoce accion";
+                
             }
         }
 
