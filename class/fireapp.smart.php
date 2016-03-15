@@ -142,7 +142,7 @@ class FireappSmart extends Fireapp{
                 
             }
             
-            $volcamino = $this->con->sql("SELECT * FROM actos_user_camino WHERE id_act='".$id_act."'");
+            $volcamino = $this->con->sql("SELECT * FROM t1.actos_user_camino t2.usuarios WHERE id_act='".$id_act."' AND t1.id_user=t2.id_user");
             print_r($volcamino);
             for($i=0; $i<$volcamino['count']; $i++){
                 
