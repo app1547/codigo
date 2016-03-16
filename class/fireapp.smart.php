@@ -6,7 +6,7 @@ class FireappSmart extends Fireapp{
 
     public $con = null;
     public $status = null;
-    public $debug = false;
+    public $debug = true;
 
     public function __construct(){
         $this->con = new Conexion();
