@@ -24,7 +24,7 @@ class FireappSmart extends Fireapp{
         
         $accion = $this->getpost('accion');
         $accion = $_POST["accion"];
-        echo "Accion: ".$accion."<br/>";
+        $ret['accion'] = $accion;
         if(isset($accion)){
 
             /* INFO SOBRE LLAMADOS */
