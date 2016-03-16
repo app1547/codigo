@@ -23,7 +23,6 @@ class FireappSmart extends Fireapp{
     public function accion(){
         
         $accion = $this->getpost('accion');
-        $accion = $_POST["accion"];
         $ret['accion'] = $accion;
         if(isset($accion)){
 
