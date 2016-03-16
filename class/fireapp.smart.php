@@ -51,8 +51,8 @@ class FireappSmart extends Fireapp{
         
         $ret['estado'] = 0;
         $ret['mensaje'] = "No se reconoce accion";
-        $ret['post1'] = $_POST['accion'];
-        $ret['lat'] = $_POST['lat'];
+        $ret['post1'] = $this->getpost('accion');
+        $ret['lat'] = $this->getpost('lat');
         return $ret;
 
     }
