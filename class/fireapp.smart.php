@@ -196,7 +196,6 @@ class FireappSmart extends Fireapp{
         print_r($info);
         if($info['estado']){
             
-            print_r("ENTRO");
             $id_user = $info['id_user'];
             $id_act = $this->getpost('idact');
             $lat = $this->getpost('lat');
@@ -211,7 +210,9 @@ class FireappSmart extends Fireapp{
                     $act = $this->con->sql("SELECT lat, lng FROM actos WHERE id_act='".$id_act."'");
                     $google = $this->getgoogledist($act['resultado'][0]['lat'], $lat, $act['resultado'][0]['lng'], $lng, $modo);
                     $s = $this->con->sql("UPDATE actos_user_camino SET lat='".$lat."', lng='".$lng."', lat_actual='".$lat."', lng_actual='".$lng."', modo='".$modo."', fecha=now(), posicion='1', distancia='".$google['distvalue']."', tiempo='".$google['timevalue']."' WHERE id_act='".$id_act."' AND id_user='".$id_user."'");
+                    
                 }
+                $this->setstatus(1, "Primera Vez Ingresado");    
                 
             }else{
                 
@@ -225,12 +226,14 @@ class FireappSmart extends Fireapp{
                         $this->con->sql("INSERT INTO history (id_user, lat, lng) VALUES ('".$id_user."', '".$lat."', '".$lng."')");
                     }
                 }
-                
+                $this->setstatus(1, "Mas de un Vez Ingresado");   
             }
 
             
+        }else{
+            $this->setstatus(0, "Error: no es posible efectuar la instruccion");
         }
-        $this->setstatus(0, "Error: no es posible efectuar la instruccion");
+        
         return $this->getstatus();
         
     }
