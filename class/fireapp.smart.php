@@ -23,6 +23,8 @@ class FireappSmart extends Fireapp{
     public function accion(){
         
         $accion = $this->getpost('accion');
+        $accion = $_POST["accion"];
+        echo "Accion: ".$accion."<br/>";
         if(isset($accion)){
 
             /* INFO SOBRE LLAMADOS */
@@ -51,8 +53,6 @@ class FireappSmart extends Fireapp{
         
         $ret['estado'] = 0;
         $ret['mensaje'] = "No se reconoce accion";
-        $ret['post1'] = $this->getpost('accion');
-        $ret['lat'] = $this->getpost('lat');
         return $ret;
 
     }
