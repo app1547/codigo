@@ -191,9 +191,10 @@ class FireappSmart extends Fireapp{
     
     public function setPosicion(){
         
+        
         $info = $this->token();
         $this->status();
-        print_r($info);
+        $this->anexostatus("post", $_POST);
         if($info['estado']){
             
             $id_user = $info['id_user'];
