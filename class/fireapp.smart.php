@@ -60,6 +60,7 @@ class FireappSmart extends Fireapp{
         if(isset($token)){
             $id_user = $this->getpost('iduser');
             $tok = $this->con->sql("SELECT token, id_cia, id_cue FROM usuarios WHERE id_user='".$id_user."'");
+            print_r($tok);
             if($tok['count'] == 1 && $tok['resultado'][0]['token'] == $token){
                 $ret['id_user'] = $id_user;
                 $ret['id_cia'] = $tok['resultado'][0]['id_cia'];
