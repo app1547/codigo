@@ -48,6 +48,7 @@ class FireappSmart extends Fireapp{
             }
 
         }
+        print_r($_POST);
         $ret['estado'] = 0;
         $ret['mensaje'] = "No se reconoce accion";
         return $ret;
