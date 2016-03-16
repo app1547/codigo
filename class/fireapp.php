@@ -48,8 +48,17 @@ class Fireapp{
     }
     public function getgoogledist($lat1, $lat2, $lng1, $lng2, $mode = null){
             
-        if($mode == null){
+        if($mode == 0 || $mode == null || $mode == ""){
             $mode = "driving";
+        }
+        if($mode == 1){
+            $mode = "bicycling";
+        }
+        if($mode == 2){
+            $mode = "walking";
+        }
+        if($mode == 3){
+            $mode = "transit";
         }
 
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$lng1."&destinations=".$lat2.",".$lng2."&mode=".$mode."&language=es";
