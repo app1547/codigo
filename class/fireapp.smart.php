@@ -199,7 +199,7 @@ class FireappSmart extends Fireapp{
         
         $info = $this->token();
         $this->status();
-        $this->anexostatus("post", $_POST);
+
         if($info['estado']){
             
             $id_user = $info['id_user'];
