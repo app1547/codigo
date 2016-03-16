@@ -3,7 +3,7 @@
     header('Content-type: text/json');
     header('Content-type: application/json');
     
-    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
     
     include('../class/fireapp.smart.php');
     
